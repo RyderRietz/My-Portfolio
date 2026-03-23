@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Ryder Rietz | Portfolio</title>
   <style>
     * {
       margin: 0;
@@ -11,31 +11,84 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    :root {
+      --blue: #4f8ef7;
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #f0f0f0;
+      --muted: #888;
     }
 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15,15,15,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 60px 20px;
-      max-width: 700px;
+      padding: 90px 20px 80px;
+      max-width: 720px;
+      margin: 0 auto;
     }
 
     .headshot-wrapper {
-      display: inline-block;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       overflow: hidden;
-      width: 200px;
-      height: 200px;
-      border: 4px solid #4f8ef7;
-      box-shadow: 0 0 30px rgba(79, 142, 247, 0.4);
-      margin-bottom: 32px;
+      border: 3px solid var(--blue);
+      box-shadow: 0 0 32px rgba(79,142,247,0.35);
+      margin-bottom: 28px;
+      flex-shrink: 0;
     }
 
     .headshot-wrapper img {
@@ -45,67 +98,409 @@
       object-position: top;
     }
 
-    h1 {
-      font-size: 2.6rem;
+    .hero h1 {
+      font-size: 2.8rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: -0.5px;
     }
 
-    .tagline {
+    .hero .subtitle {
       font-size: 1.1rem;
-      color: #a0a0a0;
-      margin-bottom: 40px;
-      line-height: 1.6;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: 14px;
     }
 
-    .links {
+    .hero .bio {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+
+    .hero-links {
       display: flex;
-      gap: 16px;
-      justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .links a {
-      padding: 12px 28px;
+    .btn {
+      padding: 11px 26px;
       border-radius: 8px;
-      text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
     }
 
-    .links a:hover {
+    .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
     .btn-primary {
-      background: #4f8ef7;
+      background: var(--blue);
       color: #fff;
     }
 
     .btn-secondary {
       background: transparent;
-      color: #f0f0f0;
-      border: 2px solid #333;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 28px;
+    }
+
+    /* EDUCATION */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 30px;
+    }
+
+    .edu-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .edu-card .degree {
+      color: var(--blue);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .edu-card .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(79,142,247,0.12);
+      color: var(--blue);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .skill-card h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--border);
+      color: var(--text);
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: 0.83rem;
+    }
+
+    /* EXPERIENCE */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .exp-header h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .exp-header .role {
+      color: var(--blue);
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .exp-header .period {
+      color: var(--muted);
+      font-size: 0.83rem;
+      white-space: nowrap;
+    }
+
+    .exp-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* CONTACT */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .contact-details {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .contact-details span {
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
+
+  <nav>
+    <span class="nav-name">Ryder Rietz</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="about" class="hero">
     <div class="headshot-wrapper">
-      <img src="headshot.jpg" alt="Profile photo" />
+      <img src="headshot.jpg" alt="Ryder Rietz" />
     </div>
-    <h1>Hey, I'm Ryder Rietz</h1>
-    <p class="tagline">
-      Welcome to my portfolio. I build things and love what I do.<br />
-      Feel free to explore my work and get in touch.
+    <h1>Ryder Rietz</h1>
+    <p class="subtitle">Business Analytics & Information Systems</p>
+    <p class="bio">
+      University of Iowa student with a passion for data, entrepreneurship, and turning insights into action. 
+      Founded a $30K+ business before graduation.
     </p>
-    <div class="links">
-      <a href="#" class="btn-primary">View My Work</a>
-      <a href="#" class="btn-secondary">Contact Me</a>
+    <div class="hero-links">
+      <a href="#experience" class="btn btn-primary">View Experience</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
     </div>
   </div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Education</p>
+    <div class="edu-card">
+      <h3>The University of Iowa</h3>
+      <p class="degree">B.B.A., Business Analytics and Information Systems</p>
+      <div class="meta">
+        <span>Iowa City, IA</span>
+        <span>Anticipated May 2026</span>
+        <span>GPA: 3.27 / 4.0</span>
+        <span class="badge">Honors Society Invitee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Tools</h4>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Techniques</h4>
+        <div class="tags">
+          <span class="tag">Data Modeling</span>
+          <span class="tag">Business Analytics</span>
+          <span class="tag">Statistics</span>
+          <span class="tag">Operations Management</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Business</h4>
+        <div class="tags">
+          <span class="tag">Market Analysis</span>
+          <span class="tag">Financial Tracking</span>
+          <span class="tag">Entrepreneurship</span>
+          <span class="tag">Business Communication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <div class="experience-list">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3>Shoe Reseller — Entrepreneur</h3>
+            <p class="role">Des Moines, IA</p>
+          </div>
+          <span class="period">May 2020 – Present</span>
+        </div>
+        <ul>
+          <li>Founded and managed a profitable business generating over $30,000 in sales through online marketplaces and social media.</li>
+          <li>Conducted market research to identify high-demand sneaker releases and trends, driving consistent revenue growth.</li>
+          <li>Negotiated pricing with buyers and sellers, strengthening relationships while maximizing profit margins.</li>
+          <li>Managed financial tracking, budgeting, and reinvestment strategies to scale operations efficiently.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3>Hy-Vee</h3>
+            <p class="role">Clerk — Cumming, IA</p>
+          </div>
+          <span class="period">Jun. 2025 – Aug. 2025</span>
+        </div>
+        <ul>
+          <li>Assisted 50+ customers daily with purchases and inquiries, providing high-quality service.</li>
+          <li>Processed $3,000+ in transactions daily with accuracy using POS systems.</li>
+          <li>Restocked 200+ items per shift to maintain inventory flow and supported 10+ weekly promotions.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3>Buffalo Wild Wings</h3>
+            <p class="role">Server / Waiter — West Des Moines, IA</p>
+          </div>
+          <span class="period">Oct. 2023 – Apr. 2025</span>
+        </div>
+        <ul>
+          <li>Delivered exceptional service to 50+ tables weekly, ensuring positive dining experiences.</li>
+          <li>Managed up to 7 tables simultaneously, resolving issues quickly and efficiently.</li>
+          <li>Promoted menu specials and upsold items to boost sales revenue.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <h3>Chipotle</h3>
+            <p class="role">Line Cook — West Des Moines, IA</p>
+          </div>
+          <span class="period">May 2022 – Oct. 2023</span>
+        </div>
+        <ul>
+          <li>Coordinated cooking times with staff to maintain fast, accurate service.</li>
+          <li>Maintained food safety standards while ensuring high quality meals.</li>
+          <li>Adapted quickly to changing menus and special customer requests.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <div class="contact-card">
+      <h2>Let's connect</h2>
+      <p>Open to opportunities in business analytics, data, and operations.</p>
+      <div class="contact-details">
+        <span>(515) 423-2730</span>
+        <a href="mailto:Jrietz@uiowa.edu">Jrietz@uiowa.edu</a>
+        <span>Norwalk, IA</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Ryder Rietz
+  </footer>
+
 </body>
 </html>
